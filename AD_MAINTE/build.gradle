@@ -1,0 +1,32 @@
+apply plugin: 'java-library'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+	compile group: 'com.opencsv', name: 'opencsv', version: '4.6'
+	compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+mainClassName = 'jp.vicugna_pacos.admainte.main.AdMainteMain'
+
+jar {
+    exclude '**/config.properties'
+    exclude '**/logback.xml'
+}
+
+startScripts {
+  classpath += files('src/dist/XxxAPlaceHolderForAConfigxxX')
+  doLast {
+    def windowsScriptFile = file getWindowsScript()
+    def unixScriptFile    = file getUnixScript()
+    windowsScriptFile.text = windowsScriptFile.text.replace('%APP_HOME%\\lib\\XxxAPlaceHolderForAConfigxxX', '%APP_HOME%\\config')
+    unixScriptFile.text  = unixScriptFile.text.replace('$APP_HOME/lib/XxxAPlaceHolderForAConfigxxX', '$APP_HOME/config')
+  }
+}
