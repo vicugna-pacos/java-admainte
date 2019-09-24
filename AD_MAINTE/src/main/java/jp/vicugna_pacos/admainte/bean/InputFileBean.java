@@ -38,6 +38,10 @@ public class InputFileBean implements Comparable<InputFileBean> {
 	@CsvBindByName(required = false)
 	private String otherPager = null;
 
+	/** 所属 */
+	@CsvBindByName(required = false)
+	private String department = null;
+
 	@Override
 	public int compareTo(InputFileBean o) {
 		int compare = 0;
@@ -90,6 +94,8 @@ public class InputFileBean implements Comparable<InputFileBean> {
 		builder.append(pager);
 		builder.append(", otherPager=");
 		builder.append(otherPager);
+		builder.append(", department=");
+		builder.append(department);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -156,6 +162,14 @@ public class InputFileBean implements Comparable<InputFileBean> {
 
 	public void setOtherPager(String otherPager) {
 		this.otherPager = otherPager;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 }

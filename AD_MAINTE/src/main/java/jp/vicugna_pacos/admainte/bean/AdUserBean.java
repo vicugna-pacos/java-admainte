@@ -32,6 +32,8 @@ public class AdUserBean {
 	private String pager = null;
 	/** ポケットベル(その他) */
 	private List<String> otherPager = null;
+	/** 所属 */
+	private String department = null;
 
 	/**
 	 * コンストラクタ
@@ -117,6 +119,12 @@ public class AdUserBean {
 					distinguishedName = (String) value;
 				}
 
+			} else if ("department".equals(attribute.getID())) {
+				// 所属
+				if (value instanceof String) {
+					department = (String) value;
+				}
+
 			}
 		}
 
@@ -145,6 +153,8 @@ public class AdUserBean {
 		builder.append(pager);
 		builder.append(", otherPager=");
 		builder.append(otherPager);
+		builder.append(", department=");
+		builder.append(department);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -227,6 +237,14 @@ public class AdUserBean {
 
 	public void setOtherPager(List<String> otherPager) {
 		this.otherPager = otherPager;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 }

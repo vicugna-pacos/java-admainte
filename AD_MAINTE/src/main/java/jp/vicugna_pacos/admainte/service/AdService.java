@@ -137,6 +137,7 @@ public class AdService {
 		addSingleAttribute(attrs, "displayName", first.getDisplayName());
 		addSingleAttribute(attrs, "givenName", first.getGivenName());
 		addSingleAttribute(attrs, "sn", first.getSn());
+		addSingleAttribute(attrs, "department", first.getDepartment());
 
 		// 複数項目の取得
 		for (InputFileBean input : inputList) {

@@ -120,7 +120,7 @@ public class AdMainteMain {
 		try (ICSVWriter writer = builder.build()) {
 
 			// ヘッダーの出力
-			String[] header = new String[] { "userId", "name", "displayName", "givenName", "sn", "mail", "pager" };
+			String[] header = new String[] { "userId", "name", "displayName", "givenName", "sn", "mail", "pager", "department" };
 			writer.writeNext(header, false);
 
 			for (InputFileBean bean : errorList) {
@@ -133,6 +133,7 @@ public class AdMainteMain {
 				list.add(bean.getSn());
 				list.add(bean.getMail());
 				list.add(bean.getPager());
+				list.add(bean.getDepartment());
 
 				writer.writeNext(list.toArray(new String[] {}), false);
 			}
